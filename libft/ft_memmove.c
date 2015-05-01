@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/11/07 10:49:19 by flagoutt          #+#    #+#             */
+/*   Updated: 2015/03/09 15:43:22 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-int		main(int ac, char **av)
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	char		*s2temp;
+
+	if (!(s2temp = (char *)malloc(n + 1)))
+		exit(0);
+	ft_memcpy(s2temp, s2, n);
+	ft_memcpy(s1, s2temp, n);
+	free(s2temp);
+	return (s1);
 }

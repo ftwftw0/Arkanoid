@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/12/17 13:50:38 by flagoutt          #+#    #+#             */
+/*   Updated: 2014/12/17 13:54:24 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
 
-int		main(int ac, char **av)
+int ft_abs(int nb)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }

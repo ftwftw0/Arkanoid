@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/11/14 14:22:47 by flagoutt          #+#    #+#             */
+/*   Updated: 2015/01/14 17:50:41 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_count_words(char const *s, char c)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	int		i;
+	int		word;
+
+	word = 0;
+	i = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i])
+		{
+			word++;
+			while (s[i] != c && s[i])
+				i++;
+		}
+	}
+	return (word);
 }

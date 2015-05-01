@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/11/14 14:49:06 by flagoutt          #+#    #+#             */
+/*   Updated: 2015/03/23 19:58:51 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strlower(char *str)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+	return (str);
 }

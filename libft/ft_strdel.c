@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/11/14 14:48:17 by flagoutt          #+#    #+#             */
+/*   Updated: 2014/11/14 14:48:20 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
+#include <stdlib.h>
 
-int		main(int ac, char **av)
+void	ft_strdel(char **as)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	if (as != 0 && *as != 0)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

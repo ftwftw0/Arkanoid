@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2015/03/31 16:19:39 by flagoutt          #+#    #+#             */
+/*   Updated: 2015/03/31 16:22:57 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_freetab(char ***tab)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
-	return (0);
+	int i;
+
+	if (!tab || !(*tab))
+		return ;
+	i = -1;
+	if ((*tab))
+	{
+		while ((*tab)[++i])
+		{
+			free((*tab)[i]);
+			(*tab)[i] = NULL;
+		}
+		free((*tab));
+		(*tab) = NULL;
+	}
 }

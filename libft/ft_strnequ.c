@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/01 21:22:27 by flagoutt         ###   ########.fr       */
+/*   Created: 2014/11/07 10:48:54 by flagoutt          #+#    #+#             */
+/*   Updated: 2014/11/13 17:04:49 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
 #include "libft.h"
+#include <string.h>
 
-int		main(int ac, char **av)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if (av[ac - 1])
-		ft_putstr(av[ac - 1]);
+	if (!s1 || !s2)
+		return (-1);
+	if (ft_strncmp(s1, s2, n) == 0)
+		return (1);
 	return (0);
 }
