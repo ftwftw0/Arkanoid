@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/01 21:24:55 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/05/01 21:36:39 by flagoutt         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -48,7 +48,11 @@ LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -f
 #		RULES																   #
 # **************************************************************************** #
 
-all: libft $(NAME)
+all: mkglfw libft $(NAME)
+
+mkglfw:
+	@~/.brew/bin/cmake glfw/
+	@$(MAKE) -C glfw/
 
 libft:
 	@$(MAKE) -C libft
