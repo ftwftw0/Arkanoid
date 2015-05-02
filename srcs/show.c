@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/02 19:28:17 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/02 20:29:40 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,15 @@ static void	ship(int ship, float x, float y)
 	}
 }
 
-static void	dispball(t_ball *ball)
+#include <stdio.h>
+static void	checkgrid(t_ball *ball, int **grid)
+{
+	printf("\nY = %f, X = %f\n", 7 - ((ball->y - 0.6) * 8 / 0.4), 20 + ((-1 + ball->x) * 20 / 2));
+	if (grid[7 - (int)((ball->y - 0.6) * 8 / 0.4)][19 + (int)((1 + ball->x) * 20 / 2)])
+		ball->dir -= 90.;
+}
+
+static int dispball(t_ball *ball, int **grid)
 {
 	glBegin(GL_QUADS);
 	glColor3f(1.f, 1.f, 1.f);
@@ -71,7 +79,21 @@ static void	dispball(t_ball *ball)
 
 	ball->x += ft_sin(ball->dir * PI / 180) / ball->speed;
 	ball->y += ft_cos(ball->dir * PI / 180) / ball->speed;
-	(void)ball;
+
+//	if (ball->y <= -1)
+//		return (0);
+	if (ball->x >= 1 || ball->y >= 1 ||
+		ball->x < -1 || ball->y < -1)
+		ball->dir -= 90.;
+	
+	if (ball->y > 0.6)
+		checkgrid(ball, grid);
+		
+	if (ball->dir > 360)
+		ball->dir -= 360;
+	if (ball->dir < 0)
+		ball->dir += 360;
+	return (0);
 }
 
 int	show(GLFWwindow* window, int **grid, t_ball *ball)
@@ -93,6 +115,5 @@ int	show(GLFWwindow* window, int **grid, t_ball *ball)
 
 	displaygrid(grid);
 	ship(1, shippos, -0.9f);
-	dispball(ball);
-	return (1);
+	return (dispball(ball, grid));
 }
