@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/02 10:57:58 by cdeniau          ###   ########.fr        #
+#    Updated: 2015/05/02 11:22:04 by flagoutt         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,7 +30,7 @@ SRCS =	$(DIRSRC)/main.c \
 
 DIRBIN		=	bin
 BIN			=	$(addprefix $(DIRBIN)/, $(SRCS:.c=.o))
-DIRLIST		=	srcs
+0DIRLIST		=	srcs
 DIRINC_GLFW	=	./GLFW/include/
 DIRINC_FT	=	./libft/
 DIRINC		=	./includes/
@@ -51,8 +51,9 @@ LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -f
 all: mkglfw libft $(NAME)
 
 mkglfw:
-	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || git submodule update --init | \
-		cmake -B./glfw -H./glfw | make -C ./glfw
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || git submodule update --init
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || ~/.brew/bin/cmake -B./glfw -H./glfw
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || make -C ./glfw
 
 libft:
 	@$(MAKE) -C libft
