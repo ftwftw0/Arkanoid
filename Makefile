@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/02 11:22:04 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/05/02 16:49:45 by flagoutt         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,9 @@ NAME		=	atari
 DIRSRC		=	srcs
 
 SRCS =	$(DIRSRC)/main.c \
-		$(DIRSRC)/lol.c
+		$(DIRSRC)/keyhooks.c \
+		$(DIRSRC)/ft_mktable.c \
+		$(DIRSRC)/show.c
 
 # **************************************************************************** #
 #		DIRECTORIES
@@ -40,7 +42,7 @@ DIRINC		=	./includes/
 # **************************************************************************** #
 
 CC			=	gcc
-CFLAG		=	-Wall -Wextra -Werror
+CFLAG		=	-Wall -Wextra -Werror -g
 INCS		=	-I$(DIRINC) -I$(DIRINC_FT) -I$(DIRINC_GLFW)
 LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
@@ -51,9 +53,9 @@ LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -f
 all: mkglfw libft $(NAME)
 
 mkglfw:
-	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || git submodule update --init
-	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || ~/.brew/bin/cmake -B./glfw -H./glfw
-	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || make -C ./glfw
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || @git submodule update --init
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || @~/.brew/bin/cmake -B./glfw -H./glfw
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || @make -C ./glfw
 
 libft:
 	@$(MAKE) -C libft
