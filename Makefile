@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/02 10:45:12 by cdeniau          ###   ########.fr        #
+#    Updated: 2015/05/02 10:57:58 by cdeniau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -51,9 +51,8 @@ LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -f
 all: mkglfw libft $(NAME)
 
 mkglfw:
-	git submodule update --init
-	cmake -B./glfw -H./glfw
-	make -C ./glfw
+	[ -f ./glfw/src/libglfw3.a ] && echo "Ok" || git submodule update --init | \
+		cmake -B./glfw -H./glfw | make -C ./glfw
 
 libft:
 	@$(MAKE) -C libft
@@ -96,3 +95,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean re libft
+.SILENT:
