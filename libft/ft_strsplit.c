@@ -3,66 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 14:54:30 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/01/14 16:07:37 by flagoutt         ###   ########.fr       */
+/*   Created: 2015/01/05 16:14:37 by cdeniau           #+#    #+#             */
+/*   Updated: 2015/05/02 18:41:58 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_splitsplitted(char const *s, char c, char **tab)
+static int	ft_count_word(char const *s, char c)
 {
-	int		size;
-	char	*ptr;
 	int		i;
-	int		words;
+	int		j;
 
-	size = 0;
-	ptr = NULL;
-	words = 0;
 	i = 0;
+	j = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
-		ptr = (char *)&s[i];
-		while (s[i] != c && s[i])
-		{
+		while (s[i] && s[i] != c)
 			i++;
-			size++;
-		}
-		tab[words++] = ft_strsub(ptr, 0, size);
-		size = 0;
+		if (s[i] || s[i - 1] != c)
+			j++;
 	}
-	return (tab);
+	return (j);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
-	char			**tab;
-	int				words;
-	unsigned int	i;
+	char	**str;
+	int		i;
+	int		j;
+	int		l;
 
-	if (!s || !c)
-		return (NULL);
 	i = 0;
-	words = 0;
-	while (s[i])
+	j = 0;
+	if (!s)
+		return (NULL);
+	l = ft_count_word(s, c);
+	str = (char **)malloc(sizeof(char *) * l + 1);
+	while (i < l)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
-			words++;
-		while (s[i] != c && s[i])
-			i++;
+		j = 0;
+		while (*s && *s == c)
+			s += 1;
+		while (*(s + j) && *(s + j) != c)
+			j++;
+		*str++ = ft_strsub(s, 0, j);
+		s += j;
+		i++;
 	}
-	tab = (char **)malloc(sizeof(char*) * (words + 1));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	tab = ft_splitsplitted(s, c, tab);
-	tab[words] = NULL;
-	return (tab);
+	*str = NULL;
+	return (str - l);
 }
