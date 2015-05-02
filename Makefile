@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/01 21:56:49 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/05/02 10:22:11 by cdeniau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -51,8 +51,9 @@ LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -f
 all: mkglfw libft $(NAME)
 
 mkglfw:
+	git submodule update --init
 	## GIT POUR PULL LE SUBMODULE (git submodule init & git submodule update)
-	[ -f ./glfw/src/libglfw3.a ] && echo "Found glfw3 lib"	|| ~/.brew/bin/cmake glfw/ | make -C glfw/
+	##[ -f ./glfw/src/libglfw3.a ] && echo "Found glfw3 lib"	|| ~/.brew/bin/cmake glfw/ | make -C glfw/
 
 libft:
 	@$(MAKE) -C libft
