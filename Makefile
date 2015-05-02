@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/02 18:17:38 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/05/02 18:32:15 by flagoutt         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,6 @@ DIRSRC		=	srcs
 
 SRCS =	$(DIRSRC)/main.c \
 		$(DIRSRC)/keyhooks.c \
-		$(DIRSRC)/ft_mktable.c \
 		$(DIRSRC)/grid.c \
 		$(DIRSRC)/show.c
 

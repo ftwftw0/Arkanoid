@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/02 17:19:48 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/02 18:34:07 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,22 @@ static void block(int x, int y, int type)
     glEnd(); //End quadrilateral coordinates
 }
 
-static void displaygrid(t_grid *grid)
+static void displaygrid(int **grid)
 {
 	int x;
 	int y;
 
 	y = -1;
 	ft_putstr("Heyo\n");
-	while (++y < grid->columns)
+	while (++y < MAPH)
 	{
-		x = 0;
-		while (++x <= 20)
+		x = -1;
+		while (++x < MAPW)
 		{
 			ft_putstr("Heyo\n");
-			block(x - 1, y, 1);
+			block(x, y, grid[y][x]);
 		}
-
 	}
-
 }
 
 static void	ship(int ship, float x, float y)
@@ -61,12 +59,13 @@ static void	ship(int ship, float x, float y)
 	}
 }
 
-int	show(GLFWwindow* window, t_grid *grid)
+int	show(GLFWwindow* window, int **grid, t_ball *ball)
 {
 	float ratio;
     int width;
 	int height;
 
+	(void)ball;
 	glfwGetFramebufferSize(window, &width, &height);
 	ratio = width / (float)height;
 	glViewport(0, 0, width, height);
@@ -78,7 +77,7 @@ int	show(GLFWwindow* window, t_grid *grid)
 	glLoadIdentity();
 //	glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
-
+	
 	displaygrid(grid);
 	ship(1, shippos, -0.9f);
 
