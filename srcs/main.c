@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/02 18:31:24 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/02 19:14:08 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		main(int ac, char **av)
 	ball->x = 0.f;
 	ball->y = -0.8f;
 	ball->dir = 45.f;
+	ball->speed = 100;
 	/* End of initiliaisialisitions */
 
     /* Loop until the user closes the window */

@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/02 18:34:07 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/02 19:28:17 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ static void displaygrid(int **grid)
 	int y;
 
 	y = -1;
-	ft_putstr("Heyo\n");
 	while (++y < MAPH)
 	{
 		x = -1;
 		while (++x < MAPW)
 		{
-			ft_putstr("Heyo\n");
 			block(x, y, grid[y][x]);
 		}
 	}
@@ -56,7 +54,24 @@ static void	ship(int ship, float x, float y)
 		glVertex2d(x - 0.05f, y + 0.05f);
 		glColor3f(0.f, 0.f, 0.f);
 		glVertex2d(x + 0.05f, y + 0.05f);
+		glEnd();
 	}
+}
+
+static void	dispball(t_ball *ball)
+{
+	glBegin(GL_QUADS);
+	glColor3f(1.f, 1.f, 1.f);
+	glVertex2d(ball->x - 0.02f, ball->y - 0.02f);
+	glVertex2d(ball->x + 0.02f, ball->y - 0.02f);
+	glVertex2d(ball->x + 0.02f, ball->y + 0.02f);
+	glColor3f(1.f, 0.f, 0.f);
+	glVertex2d(ball->x - 0.02f, ball->y + 0.02f);
+	glEnd();
+
+	ball->x += ft_sin(ball->dir * PI / 180) / ball->speed;
+	ball->y += ft_cos(ball->dir * PI / 180) / ball->speed;
+	(void)ball;
 }
 
 int	show(GLFWwindow* window, int **grid, t_ball *ball)
@@ -65,7 +80,6 @@ int	show(GLFWwindow* window, int **grid, t_ball *ball)
     int width;
 	int height;
 
-	(void)ball;
 	glfwGetFramebufferSize(window, &width, &height);
 	ratio = width / (float)height;
 	glViewport(0, 0, width, height);
@@ -77,11 +91,8 @@ int	show(GLFWwindow* window, int **grid, t_ball *ball)
 	glLoadIdentity();
 //	glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
-	
 	displaygrid(grid);
 	ship(1, shippos, -0.9f);
-
-
-	glEnd();
+	dispball(ball);
 	return (1);
 }
