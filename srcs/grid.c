@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 16:59:12 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/03 11:42:27 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/05/03 16:45:59 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,35 @@ int		check_win(int **grid)
 {
 	int		x;
 	int		y;
+	int		win;
 
 	x = -1;
+	win = 1;
 	while (++x < 20)
 	{
 		y = -1;
 		while (++y < 8)
 		{
+			if (grid[y][x] < 0)
+				grid[y][x] = 0;
 			if (grid[y][x] < 30 && grid[y][x] > 0)
-				return (0);
+				win = 0;
 		}
 	}
-	return (1);
+	return (win);
 }
 
 int		**ft_grid(char *path)
 {
 	int		fd;
 	char	*line;
-	int		**grid;//[8][20];
+	int		**grid;
 	int		xy[2];
 	char	**str;
 
 	xy[1] = 0;
-	fd = open(path, O_RDONLY);
+	if ((fd = open(path, O_RDONLY)) <= 0)
+		return (NULL);
 	grid = (int **)malloc(sizeof(int *) * MAPH);
 	xy[0] = -1;
 	while (++(xy[0]) < MAPH)

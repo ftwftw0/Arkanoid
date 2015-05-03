@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 21:46:28 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/03 11:48:44 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/05/03 15:48:20 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct		s_ball
 	int				type;
 }					t_ball;
 
+typedef struct		s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+
 float shippos;
 
 
@@ -47,5 +53,6 @@ int					show(GLFWwindow *window, int **grid, t_ball *ball);
 int					**ft_grid(char *path);
 double				ft_cos(double angle);
 double				ft_sin(double angle);
+int					check_win(int **grid);
 
 #endif
