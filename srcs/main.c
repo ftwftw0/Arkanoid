@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/03 12:02:28 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 13:34:36 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		main(int ac, char **av)
 	ball = (t_ball *)malloc(sizeof(t_ball));
 	ball->x = 0.f;
 	ball->y = -0.8f;
-	ball->dir = 15.f;
+	ball->dir = 35.1f;
 	ball->speed = 20;
 	/* End of initiliaisialisitions */
 
