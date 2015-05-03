@@ -6,11 +6,29 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 16:59:12 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/02 18:30:39 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 11:42:27 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "atari.h"
+
+int		check_win(int **grid)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	while (++x < 20)
+	{
+		y = -1;
+		while (++y < 8)
+		{
+			if (grid[y][x] < 30 && grid[y][x] > 0)
+				return (0);
+		}
+	}
+	return (1);
+}
 
 int		**ft_grid(char *path)
 {
