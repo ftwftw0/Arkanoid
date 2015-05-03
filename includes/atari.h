@@ -6,7 +6,11 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 21:46:28 by flagoutt          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/05/03 15:48:20 by flagoutt         ###   ########.fr       */
+=======
+/*   Updated: 2015/05/03 13:39:28 by cdeniau          ###   ########.fr       */
+>>>>>>> 13eda6ff2e228997b36777035b1f6edecd6553b8
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +23,7 @@
 
 
 # define COL1		glColor3f(1.0f,0.0f,0.0f)
-# define COL2		glColor3f(0.0f,0.0f,0.0f)
+# define GRIS		glColor3f(0.3f,0.3f,0.3f)
 # define COL3		glColor3f(0.0f,0.0f,1.0f)
 # define COL4		glColor3f(0.0f,1.0f,0.0f)
 # define COL5		glColor3f(1.0f,0.0f,1.0f)
