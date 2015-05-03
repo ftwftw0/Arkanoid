@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/03 11:51:14 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/05/03 13:38:57 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ static void block(int x, int y, int type)
 		return ;
     glBegin(GL_QUADS); //Begin quadrilateral coordinates
 	if (type >= 30)
-		COL1;
+		GRIS;
 	else if (type > 20)
 		COL3;
-	else
+	else if (type > 10)
 		COL4;
+	else
+		COL5;
     glVertex2d(-1.f + 0.1f * x, 0.95 - 0.05f * y);
     glVertex2d(-0.9f + 0.1f * x, 0.95 - 0.05f * y);
     glVertex2d(-0.9f + 0.1f * x, 1 - 0.05f * y);
