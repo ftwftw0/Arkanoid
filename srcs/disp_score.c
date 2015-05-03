@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 17:13:30 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/03 17:26:14 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/05/03 18:19:50 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void		ft_disp_life_num(void)
 	char	*str2;
 	char	*str;
 
-	str2 = ft_strdup((str = ft_itoa(life)));
+	str = ft_itoa(life);
+	str2 = ft_strdup(str);
 	free(str);
 	z = 0;
 	glColor3d(0.5, 0.0, 0.0);
@@ -29,6 +30,23 @@ void		ft_disp_life_num(void)
 		z++;
 	}
 	free(str2);
+}
+
+void		retry(void)
+{
+	char	*str3;
+	size_t	z;
+
+	str3 = ft_strdup("PRESS SPACE TO RETRY");
+	glColor3d(0.5, 0.0, 0.0);
+	glRasterPos2d(0., -0.5);
+	z = 0;
+	while (z <= ft_strlen(str3))
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str3[z]);
+		z++;
+	}
+	free(str3);
 }
 
 void		ft_disp_life(void)
@@ -51,12 +69,13 @@ void		ft_disp_life(void)
 void		ft_disp_score(void)
 {
 	char	*str;
-	char *str2;
+	char	*str2;
 	size_t	z;
 
 	if (score > 0)
 	{
-		str = ft_strdup((str2 = ft_itoa(score)));
+		str2 = ft_itoa(score);
+		str = ft_strdup(str2);
 		free(str2);
 		z = 0;
 		glColor3d(0.5, 0.5, 0.5);
@@ -71,4 +90,3 @@ void		ft_disp_score(void)
 		free(str);
 	}
 }
-

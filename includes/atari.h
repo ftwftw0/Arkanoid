@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 21:46:28 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/03 17:21:45 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/05/03 18:28:52 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <GLUT/glut.h>
-
 
 # define COL1		glColor3f(1.0f,0.0f,0.0f)
 # define GRIS		glColor3f(0.3f,0.3f,0.3f)
@@ -45,12 +44,15 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
-float				shippos;
-int					score;
+float		shippos;
+static int			score;
 int					life;
 
+void			ship(int ship, float x, float y);
+void			checkship(t_ball *ball);
+void				retry(void);
 void				ft_disp_score(void);
-void				key_handler(GLFWwindow* window, int keycode,
+void				key_handler(GLFWwindow *window, int keycode,
 								int scancode, int action, int mods);
 int					show(GLFWwindow *window, int **grid, t_ball *ball);
 int					**ft_grid(char *path);

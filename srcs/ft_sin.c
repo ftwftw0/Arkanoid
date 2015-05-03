@@ -6,18 +6,18 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 19:10:12 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/02 19:12:44 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 18:22:23 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "atari.h"
 
-static double ft_incredible_sin(double angle)
+static double	ft_incredible_sin(double angle)
 {
-	int step;
-	double fact;
-	double square_angle;
-	double ret;
+	int			step;
+	double		fact;
+	double		square_angle;
+	double		ret;
 
 	square_angle = angle * angle;
 	ret = angle;
@@ -32,10 +32,10 @@ static double ft_incredible_sin(double angle)
 	return (ret);
 }
 
-double ft_sin(double angle)
+double			ft_sin(double angle)
 {
-	int sign;
-	double pi;
+	int			sign;
+	double		pi;
 
 	pi = 3.141592653589793;
 	sign = 1;
