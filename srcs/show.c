@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/03 13:40:52 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 13:44:09 by flagoutt         ###   ########.fr       */
 /*   Updated: 2015/05/03 11:51:14 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ static void	ship(int ship, float x, float y)
 }
 
 #include <stdio.h>
-static void	checkgrid(t_ball *ball, int **grid)
+static int	checkgrid(t_ball *ball, int **grid)
 {
 	int y;
 	int x;
@@ -79,7 +79,9 @@ static void	checkgrid(t_ball *ball, int **grid)
 		ball->dir = (180 * (ball->dir / 180 + 1)) - (2 * ((int)ball->dir % 90));
 		if (grid[y][x] < 30)
 			grid[y][x] -= 10;
+		return (1);
 	}
+	return (0);
 }
 
 static int dispball(t_ball *ball, int **grid)
@@ -93,27 +95,23 @@ static int dispball(t_ball *ball, int **grid)
 	glVertex2d(ball->x - 0.02f, ball->y + 0.02f);
 	glEnd();
 
-//	if (ball->y <= -1)
-//		return (0);
-
-	if (ball->x >= 1 || ball->y >= 1 ||
-		ball->x < -1 || ball->y < -1)
-	{
+	if (ball->x >= 1 || ball->y >= 1 ||	ball->x < -1 || ball->y < -1)
 		ball->dir = (180 * (ball->dir / 180 + 1)) - (2 * ((int)ball->dir % 90));
-	}
-	if (ball->y > 0.6)
+	else if (ball->y > 0.6)
 		checkgrid(ball, grid);
 	ball->x += ft_cos(ball->dir * PI / 180) / ball->speed;
 	ball->y += ft_sin(ball->dir * PI / 180) / ball->speed;
-	if (ball->x >= 1 || ball->y >= 1 ||
-		ball->x < -1 || ball->y < -1)
+	if (ball->x >= 1 || ball->y >= 1 ||	ball->x < -1 || ball->y < -1)
 	{
 		ball->dir = (180 * (ball->dir / 180 + 1)) - (2 * ((int)ball->dir % 90));
 		ball->x += ft_cos(ball->dir * PI / 180) / ball->speed;
 		ball->y += ft_sin(ball->dir * PI / 180) / ball->speed;
 	}
-	else if (ball->y > 0.6)
-		checkgrid(ball, grid);
+	else if (ball->y > 0.6 && checkgrid(ball, grid))
+	{
+		ball->x += ft_cos(ball->dir * PI / 180) / ball->speed;
+		ball->y += ft_sin(ball->dir * PI / 180) / ball->speed;
+	}
 	if (ball->dir > 360)
 		ball->dir -= 360;
 	if (ball->dir < 0)
