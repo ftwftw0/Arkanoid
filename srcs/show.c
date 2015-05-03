@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/02 20:29:40 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 11:59:34 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,19 @@ static void	ship(int ship, float x, float y)
 #include <stdio.h>
 static void	checkgrid(t_ball *ball, int **grid)
 {
-	printf("\nY = %f, X = %f\n", 7 - ((ball->y - 0.6) * 8 / 0.4), 20 + ((-1 + ball->x) * 20 / 2));
-	if (grid[7 - (int)((ball->y - 0.6) * 8 / 0.4)][19 + (int)((1 + ball->x) * 20 / 2)])
-		ball->dir -= 90.;
+	float y;
+	float x;
+
+	y = 8 - ((ball->y - 0.6) * 8 / 0.4);
+	x = 20 + ((-1 + ball->x) * 20 / 2);
+
+	printf("\nY = %f, X = %f\n", y, x);
+
+	if (grid[(int)y][(int)x])
+	{
+		ball->dir = (180 * (ball->dir / 180 + 1)) - (2 * ((int)ball->dir % 90));
+	}
+
 }
 
 static int dispball(t_ball *ball, int **grid)
@@ -77,22 +87,24 @@ static int dispball(t_ball *ball, int **grid)
 	glVertex2d(ball->x - 0.02f, ball->y + 0.02f);
 	glEnd();
 
-	ball->x += ft_sin(ball->dir * PI / 180) / ball->speed;
-	ball->y += ft_cos(ball->dir * PI / 180) / ball->speed;
-
+	ball->x += ft_cos(ball->dir * PI / 180) / ball->speed;
+	ball->y += ft_sin(ball->dir * PI / 180) / ball->speed;
 //	if (ball->y <= -1)
 //		return (0);
-	if (ball->x >= 1 || ball->y >= 1 ||
-		ball->x < -1 || ball->y < -1)
-		ball->dir -= 90.;
-	
 	if (ball->y > 0.6)
 		checkgrid(ball, grid);
-		
+	if (ball->x >= 1 || ball->y >= 1 ||
+		ball->x < -1 || ball->y < -1)
+	{
+		ball->dir = (180 * (ball->dir / 180 + 1)) - (2 * ((int)ball->dir % 90));
+	}
 	if (ball->dir > 360)
 		ball->dir -= 360;
 	if (ball->dir < 0)
 		ball->dir += 360;
+//		ball->dir += (((int)ball->dir % 90) < 45) ? -90.f : 90.f ;
+	printf("\nBALL->DIR = %f\nPOSY = %f & POSX = %f\n", ball->dir, ball->y, ball->x);
+
 	return (0);
 }
 
