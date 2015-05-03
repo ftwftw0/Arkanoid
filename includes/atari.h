@@ -6,11 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 21:46:28 by flagoutt          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/05/03 15:48:20 by flagoutt         ###   ########.fr       */
-=======
-/*   Updated: 2015/05/03 13:39:28 by cdeniau          ###   ########.fr       */
->>>>>>> 13eda6ff2e228997b36777035b1f6edecd6553b8
+/*   Updated: 2015/05/03 17:21:45 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +16,7 @@
 # include <GLFW/glfw3.h>
 # include "libft.h"
 # include <fcntl.h>
+# include <GLUT/glut.h>
 
 
 # define COL1		glColor3f(1.0f,0.0f,0.0f)
@@ -48,9 +45,11 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
-float shippos;
+float				shippos;
+int					score;
+int					life;
 
-
+void				ft_disp_score(void);
 void				key_handler(GLFWwindow* window, int keycode,
 								int scancode, int action, int mods);
 int					show(GLFWwindow *window, int **grid, t_ball *ball);

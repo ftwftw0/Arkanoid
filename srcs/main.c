@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 20:19:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/03 16:47:36 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 17:23:12 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int		main(int ac, char **av)
 
 	(void)av;
 	(void)ac;
-    if (!glfwInit())
+	score = 0;
+	life = 7;
+	if (!glfwInit())
         return -1;
 	shippos = 0.f;
-    window = glfwCreateWindow(480, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(800, 800, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -60,6 +62,8 @@ int		main(int ac, char **av)
         /* Render here */
 		if (show(window, grid, ball))
 			exit (1);//ici une fonction win pour quitter proprement
+
+		ft_disp_score();
 
         /* Swap front and back buffers -> Show render */
         glfwSwapBuffers(window);

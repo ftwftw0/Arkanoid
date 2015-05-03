@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 16:59:12 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/05/03 16:45:59 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 17:07:57 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int		check_win(int **grid)
 		while (++y < 8)
 		{
 			if (grid[y][x] < 0)
+			{
 				grid[y][x] = 0;
+				score++;
+			}
 			if (grid[y][x] < 30 && grid[y][x] > 0)
 				win = 0;
 		}

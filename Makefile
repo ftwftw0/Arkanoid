@@ -6,7 +6,7 @@
 #    By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/05 17:59:57 by flagoutt          #+#    #+#              #
-#    Updated: 2015/05/02 19:12:14 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/05/03 17:16:03 by cdeniau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,7 +26,8 @@ SRCS =	$(DIRSRC)/main.c \
 		$(DIRSRC)/grid.c \
 		$(DIRSRC)/ft_sin.c \
 		$(DIRSRC)/ft_cos.c \
-		$(DIRSRC)/show.c
+		$(DIRSRC)/show.c \
+		$(DIRSRC)/disp_score.c
 
 # **************************************************************************** #
 #		DIRECTORIES
@@ -44,9 +45,9 @@ DIRINC		=	./includes/
 # **************************************************************************** #
 
 CC			=	gcc
-CFLAG		=	-Wall -Wextra -Werror -g
+CFLAG		=	-Wall -Wextra -Werror -g -Wno-deprecated
 INCS		=	-I$(DIRINC) -I$(DIRINC_FT) -I$(DIRINC_GLFW)
-LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+LIBS		=   -Llibft/ -lft -Lglfw/src -lglfw3 -framework Glut -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 # **************************************************************************** #
 #		RULES																   #

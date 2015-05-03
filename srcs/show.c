@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:17:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/05/03 16:37:55 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/05/03 17:14:41 by cdeniau          ###   ########.fr       */
 /*   Updated: 2015/05/03 11:51:14 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -159,12 +159,6 @@ int	show(GLFWwindow* window, int **grid, t_ball *ball)
 	glLoadIdentity();
 	//	glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 	//HYPNOOOOOOOOOOOOOOOOO
-	//
-	//
-	//
-	//
-	//
-	//
 	//
 	//LOL
 	displaygrid(grid);
