@@ -1,3 +1,5 @@
+Arkanoid est un petit Rush de moins de 48h en OpenGL avec le framework GLFW3.
+
 TODOLIST
 
 >> Algo fini, reste a fixer l'angle de rebond de la balle selon texture de bloc lors d'une collision
